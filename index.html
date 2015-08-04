@@ -1,9 +1,45 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="condosApp">
   <head>
-    <script src="./libs/angular.min.js"></script>
+    <meta charset="utf-8">
     <title>condos</title>
+    <script src="./libs/angular.min.js"></script>
+    <script src="./condos.js"></script>
+    <link rel="stylesheet" href="./libs/bootstrap.min.css" />
+    <link rel="stylesheet" href="condos.css" />
   </head>
   <body>
+    <main class="container" ng-controller="CondosController as condos">
+      <header class="page-header">
+        <h1>condos</h1>
+      </header>
+      <div class="panel panel-default">
+        <form action="#" class="panel-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="search" class="form-control" name="nomcondo" placeholder="Poste source" autofocus="">
+          </div>
+          <div class="col-sm-6">
+            <select name="zoneconduite" class="form-control">
+              <optgroup label="Zone de conduite...">
+              <option ng-repeat="zone in condos.zones" value="{{zone.nom}}">{{zone.nom}}</option>
+            </optgroup>
+            </select>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="condos list-group">
+        <div class="list-group-item" ng-repeat="condo in condos.condos">
+          <h4 class="list-group-item-heading">
+            {{condo.ps}} <small>{{condo.nom}}</small>
+          </h4>
+          <div class="list-group-item-text">
+            <a href="#">liste des manœuvres</a>
+            <a href="#">historique de la puissance</a>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
