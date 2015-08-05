@@ -17,7 +17,9 @@
         <form action="#" class="panel-body">
         <div class="row">
           <div class="col-sm-6">
-            <input type="search" class="form-control" name="nomcondo" placeholder="Poste source" autofocus="">
+            <input type="search" ng-model="search"
+                  class="form-control" name="nomcondo"
+                  placeholder="Poste source" autofocus="true">
           </div>
           <div class="col-sm-6">
             <select name="zoneconduite" class="form-control">
@@ -30,13 +32,16 @@
         </form>
       </div>
       <div class="condos list-group">
-        <div class="list-group-item" ng-repeat="condo in condos.condos">
+        <div class="list-group-item" ng-repeat="condo in condos.condos"
+                                      ng-show="condo.ps.match(search) !== null">
           <h4 class="list-group-item-heading">
-            {{condo.ps}} <small>{{condo.nom}}</small>
+            {{condo.libelle}} <small><strong>{{condo.ouvrage}}</strong> de {{condo.ps}}</small>
           </h4>
           <div class="list-group-item-text">
-            <a href="#">liste des manœuvres</a>
-            <a href="#">historique de la puissance</a>
+              <ul class="nav nav-tabs">
+              <li role="presentation"><a href="#">Historique des évènements</a></li>
+              <li role="presentation"><a href="#">Historique des télémesures</a></li>
+            </ul>
           </div>
         </div>
       </div>
