@@ -39,7 +39,7 @@
         <div class="list-group-item" ng-repeat="condo in condos.condos"
                                       ng-show="condo.ps.match(search.toUpperCase()) !== null">
           <h4 class="list-group-item-heading">
-            {{condo.nom}} <small>{{condo.ps}}</small>
+            {{condo.ps}} <small>{{condo.nom}}</small>
           </h4>
           <div class="list-group-item-text">
               <ul class="nav nav-tabs">
