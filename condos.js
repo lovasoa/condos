@@ -6,7 +6,9 @@ angular.module('condosApp', [])
   condos.condos = [];
   $http.get(APIURL + "liste_condensateurs").then(function listecondos(response) {
     condos.condos = response.data.results;
-    console.log(response);
+  });
+  $http.get(APIURL + "liste_postes_sources").then(function listeps(response) {
+    condos.ps = response.data.results;
   });
   condos.zones = [
       {nom:"Essonne"},

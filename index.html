@@ -19,7 +19,11 @@
           <div class="col-sm-6">
             <input type="search" ng-model="search"
                   class="form-control" name="nomcondo"
-                  placeholder="Poste source" autofocus="true">
+                  placeholder="Poste source" autofocus="true"
+                  list="postes_sources">
+            <datalist id="postes_sources">
+              <option ng-repeat="ps in condos.ps" value="{{ps.nom}}">
+            </datalist>
           </div>
           <div class="col-sm-6">
             <select name="zoneconduite" class="form-control">
@@ -33,9 +37,9 @@
       </div>
       <div class="condos list-group">
         <div class="list-group-item" ng-repeat="condo in condos.condos"
-                                      ng-show="condo.ps.match(search) !== null">
+                                      ng-show="condo.ps.match(search.toUpperCase()) !== null">
           <h4 class="list-group-item-heading">
-            {{condo.libelle}} <small><strong>{{condo.ouvrage}}</strong> de {{condo.ps}}</small>
+            {{condo.nom}} <small>{{condo.ps}}</small>
           </h4>
           <div class="list-group-item-text">
               <ul class="nav nav-tabs">
